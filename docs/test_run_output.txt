@@ -1,0 +1,55 @@
+PASS  Logged-out visitor is redirected away from the dashboard
+PASS  Logged-out visitor cannot open /task_form.php
+PASS  Logged-out visitor cannot open /task_form.php?id=1
+PASS  Logged-out POST to task_delete.php is refused (405/302/419)
+PASS  All stored passwords are bcrypt hashes (none in plain text)
+PASS  Wrong password shows a generic error
+PASS  Unknown email shows the same generic error
+PASS  Valid login reaches the dashboard
+PASS  Add task with valid data shows success message
+PASS  Empty (whitespace-only) title is rejected with friendly error
+PASS  ...and nothing was inserted
+PASS  Title longer than 150 chars is rejected
+PASS  Invalid status value is rejected on create
+PASS  Edit form is pre-filled
+PASS  Edit updates title/description/status and shows message
+PASS  Edit with empty title is rejected
+PASS  Status can be changed to Completed
+PASS  Invalid status on status-change is refused
+PASS  Search by title finds matching task
+PASS  Status filter shows only Completed tasks
+PASS  Search + filter combine
+PASS  A literal % in search does not act as a wildcard
+PASS  SQL-injection string in search is harmless (no error, no rows)
+PASS  Tampered status filter is ignored safely
+PASS  Dashboard summary total matches the database
+PASS  Delete removes the task and shows message
+PASS  User content is HTML-escaped on output (XSS)
+PASS  ...also escaped inside the edit form
+PASS  Create without CSRF token is rejected (419)
+PASS  Delete without CSRF token is rejected (419)
+PASS  Forged CSRF token is rejected (419)
+PASS  Delete via GET is not allowed (405)
+PASS  Alice cannot open Bob's task edit page by changing the URL (404)
+PASS  Alice cannot update Bob's task by POSTing his id (404)
+PASS  Alice cannot change Bob's task status (404)
+PASS  Alice cannot delete Bob's task (404)
+PASS  Regular user passing scope=all still sees only own tasks
+PASS  Admin can see all users' tasks
+PASS  Admin default view is only the admin's own tasks
+PASS  Admin can open another user's task
+PASS  Duplicate email is rejected
+PASS  Weak password is rejected
+PASS  Mismatched confirmation is rejected
+PASS  New account is created
+PASS  Self-registration can never create an admin (role field ignored)
+PASS  New user's password is stored as a bcrypt hash
+PASS  Pagination: page 1 shows 10 tasks and a Next link
+PASS  Pagination: page 2 shows the remaining 2 tasks
+PASS  Out-of-range page number is clamped, not an error
+PASS  Logout works and shows a message
+PASS  After logout the dashboard is no longer accessible
+PASS  Logout via GET is not allowed (405)
+PASS  Database failure shows a generic 500 page without credentials/raw errors
+
+53/53 checks passed
